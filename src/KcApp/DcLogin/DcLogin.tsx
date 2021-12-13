@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useState } from "react";
 import type { KcProps } from "keycloakify";
 import type { KcContext } from "../kcContext";
 import styles from "./DcLogin.module.scss";
@@ -9,12 +9,18 @@ type DcLogin = Extract<KcContext, { pageId: "dc-login.ftl" }>;
 
 export const DcLoginTheme = memo(
   ({ kcContext, ...props }: { kcContext: DcLogin } & KcProps) => {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [errors, setErrors] = useState({ username: "", password: "" });
+    const { url } = kcContext;
 
-
-    const { url, realm, } = kcContext;
-
-    console.log({ url });
-    console.log({ realm });
+    const changeValueHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setErrors((prevState) => ({
+        ...prevState,
+        [e.target.id]:
+          e.target.value === "" ? `Please enter a ${e.target.id}` : "",
+      }));
+    };
 
     return (
       <div className={styles.login_page_container}>
@@ -28,19 +34,45 @@ export const DcLoginTheme = memo(
             action={url.loginAction}
             method="post"
             className={styles.login_form}
-            // onSubmit={submitLoginFormHandler}
           >
-            <input
-              className={styles.login_input}
-              placeholder="Username"
-              type="text"
-            />
-            <input
-              className={styles.login_input}
-              placeholder="Password"
-              type="password"
-            />
-            <button type="submit" className={styles.login_button}>
+            <div className={styles.form_control}>
+              <input
+                className={styles.login_input}
+                placeholder="Username"
+                type="text"
+                id="username"
+                value={username}
+                onChange={(e) => {
+                  setUsername(e.target.value);
+                  changeValueHandler(e);
+                }}
+              />
+              {errors.username && (
+                <span className={styles.error}>{errors.username}</span>
+              )}
+            </div>
+
+            <div className={styles.form_control}>
+              <input
+                className={styles.login_input}
+                placeholder="Password"
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  changeValueHandler(e);
+                }}
+              />
+              {errors.password && (
+                <span className={styles.error}>{errors.password}</span>
+              )}
+            </div>
+            <button
+              type="submit"
+              className={styles.login_button}
+              disabled={username === "" || password === ""}
+            >
               Login
             </button>
           </form>

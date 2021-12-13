@@ -5,14 +5,8 @@ import { getKcContext } from "keycloakify";
 export const { kcContext } = getKcContext<
 	{
 		pageId: "register.ftl";
-		/** 
-		 * Defined when you use the keycloak-mail-whitelisting keycloak plugin
-		 * (https://github.com/micedre/keycloak-mail-whitelisting)
-		 */
 		authorizedMailDomains: string[];
 	} |
-	//NOTE: A 'keycloakify' field must be added 
-	//in the package.json to generate theses pages
 	{
 		pageId: "my-extra-page-1.ftl";
 	} | {
@@ -23,9 +17,9 @@ export const { kcContext } = getKcContext<
 		pageId: "dc-login.ftl";
 	}
 >({
-	/* Uncomment to test */
 	//"mockPageId": "login.ftl",
 	"mockPageId": "dc-login.ftl",
+	// "mockPageId": "register.ftl",
 	/** 
 	 * Customize the simulated kcContext that will let us 
 	 * dev the page outside keycloak (with auto-reload)

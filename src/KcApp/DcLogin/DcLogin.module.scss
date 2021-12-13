@@ -28,10 +28,24 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 50px;
+
+    .form_control {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      margin: 15px 0;
+    }
+
+    .error {
+      color: rgb(255, 51, 51);
+      align-self: flex-start;
+      font-size: 12px;
+      position: absolute;
+      top: -15px;
+    }
   }
 
   .login_input {
-    margin: 15px 0;
     padding: 10px;
     width: 320px;
     height: 30px;
@@ -51,6 +65,11 @@
     margin-top: 15px;
     text-transform: uppercase;
     height: 50px;
+
+    &:disabled {
+      filter: brightness(0.5);
+      background-color: rgba(0, 0, 0, 0.7);
+    }
   }
 }
 
