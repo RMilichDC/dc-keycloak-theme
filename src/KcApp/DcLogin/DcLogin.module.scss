@@ -1,0 +1,85 @@
+.login_page_container {
+  background-image: #2a3135;
+  background-image: linear-gradient(
+      rgba(31, 65, 87, 0.7),
+      rgba(31, 65, 87, 0.7)
+    ),
+    url("./login_screen_bg.jpg");
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login_window_container {
+  background-color: #fff;
+  width: 740px;
+  background: rgb(241, 241, 241);
+
+  .slogen_phrase {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 400;
+  }
+
+  .login_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+
+  .login_input {
+    margin: 15px 0;
+    padding: 10px;
+    width: 320px;
+    height: 30px;
+    font-size: 18px;    
+    border: 1px solid rgb(209, 209, 209);
+    outline: none;
+  }
+
+  .login_button {
+    width: 340px;
+    height: 30px;
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
+    font-weight: 200;
+    background-color: #000;
+    margin-top: 15px;
+    text-transform: uppercase;
+    height: 50px;
+  }
+}
+
+.header_container {
+  position: relative;
+
+  .dc_label_container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .digital_clues_label {
+      color: #fff;
+      font-size: 70px;
+      font-family: "Courier New", Courier, monospace;
+      font-weight: 100;
+      margin: 0;
+    }
+
+    .separator {
+      width: 100px;
+      height: 1px;
+      background-color: #fff;
+      margin: 25px 0;
+    }
+  }
+}

@@ -18,7 +18,8 @@
     "keycloakify": {
         "extraPages": [
             "my-extra-page-1.ftl",
-            "my-extra-page-2.ftl"
+            "my-extra-page-2.ftl",
+            "dc-login.ftl"
         ]
     },
     "author": "u/garronej",
@@ -28,8 +29,10 @@
         "@emotion/react": "^11.5.0",
         "keycloakify": "^4.2.13",
         "powerhooks": "^0.11.0",
-        "react": "^17.0.1",
+        "react": "^17.0.2",
         "react-dom": "^17.0.1",
+        "react-icons": "^4.3.1",
+        "react-tsparticles": "^1.37.5",
         "tss-react": "^3.0.0"
     },
     "devDependencies": {

@@ -17,6 +17,7 @@ import { RegisterUserProfile } from "keycloakify/lib/components/RegisterUserProf
 import { MyExtraPage1 } from "./MyExtraPage1";
 import { MyExtraPage2 } from "./MyExtraPage2";
 import "./kcMessagesExtension";
+import { DcLoginTheme } from "./DcLogin/DcLogin";
 
 export const KcApp = memo(({ kcContext }: { kcContext: KcContext; }) => {
     switch (kcContext.pageId) {
@@ -32,6 +33,7 @@ export const KcApp = memo(({ kcContext }: { kcContext: KcContext; }) => {
         case "login-idp-link-confirm.ftl": return <LoginIdpLinkConfirm {...{ kcContext, ...props }} />;
         case "my-extra-page-1.ftl": return <MyExtraPage1 {...{ kcContext, ...props }} />;
         case "my-extra-page-2.ftl": return <MyExtraPage2 {...{ kcContext, ...props }} />;
+        case "dc-login.ftl": return <DcLoginTheme {...{ kcContext, ...props }} />;
         case "register-user-profile.ftl": return <RegisterUserProfile {...{ kcContext, ...props }} />;
     }
 });
