@@ -4,6 +4,8 @@ import type { KcContext } from "../kcContext";
 import styles from "./DcLogin.module.scss";
 import ParticlesWrapper from "./ParticlesWrapper";
 import { FcKey } from "react-icons/fc";
+import { AiFillGoogleCircle, AiFillLinkedin } from "react-icons/ai";
+import { CgMicrosoft } from "react-icons/cg";
 
 type DcLogin = Extract<KcContext, { pageId: "login.ftl" }>;
 
@@ -16,6 +18,13 @@ export const DcLoginTheme = memo(
     const [errors, setErrors] = useState({ username: "", password: "" });
 
     console.log({ kcContext });
+    console.log(social.providers);
+
+    const providersIconst = new Map([
+      ["google", <AiFillGoogleCircle />],
+      ["linkedin", <AiFillLinkedin />],
+      ["microsoft", <CgMicrosoft />],
+    ]);
 
     useEffect(() => {
       if (
@@ -109,8 +118,12 @@ export const DcLoginTheme = memo(
             {social.providers && (
               <div className={styles.sso_container}>
                 {social.providers.map((provider) => (
-                  <a className={styles.sso_link} key={provider.providerId}>
-                    <i className={`fa fa-${provider.alias}`}></i>
+                  <a
+                    href={provider.loginUrl}
+                    className={styles.sso_link}
+                    key={provider.providerId}
+                  >
+                    {providersIconst.get(provider.alias)}
                   </a>
                 ))}
               </div>
