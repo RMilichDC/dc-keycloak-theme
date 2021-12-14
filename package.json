@@ -18,8 +18,7 @@
     "keycloakify": {
         "extraPages": [
             "my-extra-page-1.ftl",
-            "my-extra-page-2.ftl",
-            "dc-login.ftl"
+            "my-extra-page-2.ftl"
         ]
     },
     "author": "u/garronej",

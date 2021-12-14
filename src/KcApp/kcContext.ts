@@ -14,11 +14,10 @@ export const { kcContext } = getKcContext<
 		someCustomValue: string;
 	} |
 	{
-		pageId: "dc-login.ftl";
+		pageId: "login.ftl";
 	}
 >({
-	//"mockPageId": "login.ftl",
-	"mockPageId": "dc-login.ftl",
+	// "mockPageId": "login.ftl",
 	// "mockPageId": "register.ftl",
 	/** 
 	 * Customize the simulated kcContext that will let us 

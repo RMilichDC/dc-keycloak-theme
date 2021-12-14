@@ -21,7 +21,8 @@ import { DcLoginTheme } from "./DcLogin/DcLogin";
 
 export const KcApp = memo(({ kcContext }: { kcContext: KcContext; }) => {
     switch (kcContext.pageId) {
-        case "login.ftl": return <Login {...{ kcContext, ...props }} />;
+        // case "login.ftl": return <Login {...{ kcContext, ...props }} />;
+        case "login.ftl": return <DcLoginTheme {...{ kcContext, ...props }} />;
         case "register.ftl": return <Register {...{ kcContext, ...props }} />;
         case "info.ftl": return <Info {...{ kcContext, ...props }} />;
         case "error.ftl": return <Error {...{ kcContext, ...props }} />;
@@ -33,7 +34,6 @@ export const KcApp = memo(({ kcContext }: { kcContext: KcContext; }) => {
         case "login-idp-link-confirm.ftl": return <LoginIdpLinkConfirm {...{ kcContext, ...props }} />;
         case "my-extra-page-1.ftl": return <MyExtraPage1 {...{ kcContext, ...props }} />;
         case "my-extra-page-2.ftl": return <MyExtraPage2 {...{ kcContext, ...props }} />;
-        case "dc-login.ftl": return <DcLoginTheme {...{ kcContext, ...props }} />;
         case "register-user-profile.ftl": return <RegisterUserProfile {...{ kcContext, ...props }} />;
     }
 });
