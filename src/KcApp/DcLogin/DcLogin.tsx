@@ -1,6 +1,5 @@
-import { memo, useState } from "react";
+import { memo, useState, useEffect } from "react";
 import { KcProps } from "keycloakify";
-import { Template } from "keycloakify/lib/components/Template";
 import type { KcContext } from "../kcContext";
 import styles from "./DcLogin.module.scss";
 import ParticlesWrapper from "./ParticlesWrapper";
@@ -10,12 +9,25 @@ type DcLogin = Extract<KcContext, { pageId: "login.ftl" }>;
 
 export const DcLoginTheme = memo(
   ({ kcContext, ...props }: { kcContext: DcLogin } & KcProps) => {
+    const { url, realm, message, social } = kcContext;
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [hideMessage, setHideMessage] = useState(true);
     const [errors, setErrors] = useState({ username: "", password: "" });
-    const { url } = kcContext;
+
+    console.log({ kcContext });
+
+    useEffect(() => {
+      if (
+        message?.type === "error" ||
+        message?.type === "warning" ||
+        message?.type === "info"
+      )
+        setHideMessage(false);
+    }, []);
 
     const changeValueHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setHideMessage(true);
       setErrors((prevState) => ({
         ...prevState,
         [e.target.id]:
@@ -31,6 +43,12 @@ export const DcLoginTheme = memo(
             <FcKey />
             <strong>Welcome</strong>, to start investigating, please login
           </h3>
+
+          {!hideMessage && message?.type && (
+            <div style={{ textAlign: "center" }}>
+              <span>{message.summary}</span>
+            </div>
+          )}
           <form
             action={url.loginAction}
             method="post"
@@ -79,6 +97,25 @@ export const DcLoginTheme = memo(
               Login
             </button>
           </form>
+
+          <div className={styles.login_footer_container}>
+            {realm.registrationAllowed && (
+              <div className={styles.register_container}>
+                <a className={styles.register_link} href={url.registrationUrl}>
+                  register
+                </a>
+              </div>
+            )}
+            {social.providers && (
+              <div className={styles.sso_container}>
+                {social.providers.map((provider) => (
+                  <a className={styles.sso_link} key={provider.providerId}>
+                    <i className={`fa fa-${provider.alias}`}></i>
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     );

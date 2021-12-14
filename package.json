@@ -16,10 +16,7 @@
         "download-builtin-keycloak-theme": "download-builtin-keycloak-theme 15.0.2"
     },
     "keycloakify": {
-        "extraPages": [
-            "my-extra-page-1.ftl",
-            "my-extra-page-2.ftl"
-        ]
+        "extraPages": []
     },
     "author": "u/garronej",
     "license": "MIT",
