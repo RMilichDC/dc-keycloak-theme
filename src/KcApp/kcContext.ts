@@ -19,10 +19,6 @@ export const { kcContext } = getKcContext<
 >({
 	// "mockPageId": "login.ftl",
 	// "mockPageId": "register.ftl",
-	/** 
-	 * Customize the simulated kcContext that will let us 
-	 * dev the page outside keycloak (with auto-reload)
-	 */
 	"mockData": [
 		{
 			"pageId": "my-extra-page-2.ftl",
